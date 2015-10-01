@@ -1,0 +1,12 @@
+#site-title {
+	width:100%;
+	text-align:center;
+}
+#logout-btn {
+	color: #777;
+	cursor: pointer;
+	transition: 0.3s all ease-in-out;
+}
+#logout-btn:hover {
+	color: #000;
+}

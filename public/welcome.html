@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Taskio Task Master</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-app>
+
+  <!-- navigation -->
+  <nav class="nav navbar navbar-default">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+          <a class="navbar-brand" id="site-title" href="#" style="">Taskio Login</a>      
+        </div>
+        <div class="col-md-2 col-md-offset-2 col-lg-1 col-lg-offset-2">
+          <a class="navbar-brand" id="logout-btn">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <h1></h1>
+        <form class="form-inline">
+          <!-- USER DISPLAY NAME -->
+          <div class="form-group">
+            <label for="user-display-name">Display Name:</label>
+            <!-- show current user-display-name -->
+            <span id="user-display-name"></span>
+            <!-- input to change user-display-name value -->
+            <input type="text" class="form-control hidden" id="user-display-name-value" placeholder="Display Name">
+          </div>
+          <br>
+          <!-- BIRTHDAY -->
+          <div class="form-group">
+            <label for="user-display-name">Birthday:</label>
+            <!-- show current user-birthday -->
+            <span id="user-birthday"></span>
+            <!-- input to change user-birthday value -->
+            <input type="date" class="form-control hidden" id="user-birthday-value" placeholder="Bithday">
+          </div>
+          <br>
+          <!-- PHONE -->
+          <div class="form-group">
+            <label for="user-phone">Phone:</label>
+            <!-- show current user-phone -->
+            <span id="user-phone"></span>
+            <!-- input to change user-phone value -->
+            <input type="number" class="form-control hidden" id="user-phone-value" placeholder="Phone Number">
+          </div>
+          <br>
+          <!-- EMAIL -->
+          <div class="form-group">
+            <label for="user-email">Email:</label>
+            <!-- show current user-phone -->
+            <span id="user-email"></span>
+            <!-- input to change user-email value -->
+            <input type="email" class="form-control hidden" id="user-email-value" placeholder="Email Address">
+          </div>
+          <br>
+          <!-- FIRST NAME -->
+          <div class="form-group">
+            <label for="user-firstname">First Name:</label>
+            <!-- show current user-firstname -->
+            <span id="user-firstname"></span>
+            <!-- input to change user-firstname value -->
+            <input type="text" class="form-control hidden" id="user-firstname-value" placeholder="First Name">
+          </div>
+          <br>
+          <!-- LAST NAME -->
+          <div class="form-group">
+            <label for="user-lastname">Last Name:</label>
+            <!-- show current user-lastname -->
+            <span id="user-lastname"></span>
+            <!-- input to change user-lastname value -->
+            <input type="text" class="form-control hidden" id="user-lastname-value" placeholder="Last Name">
+          </div>
+          
+          <div class="clearfix"></div>
+          <!-- edit profile button -->
+          <button id="edit-profile" class="btn btn-default">edit profile</button>
+          <!-- update profile button -->
+          <button id="update-profile" class="btn btn-default hidden">update profile</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="/dpd.js"></script>
+  <script src="js/main.js"></script>
+  <script type="text/javascript">
+    // store current user id
+    var userid, dname, bday
+
+    function profileupdate() {
+      // hide update button
+      $('#update-profile').addClass('hidden')      
+      // show edit profile button
+      $('#edit-profile').removeClass('hidden')
+
+      // hide display name input to change value
+      $('#user-display-name-value').addClass('hidden')      
+      // show plain text on display
+      $('#user-display-name').removeClass('hidden')
+      // hide birthday input to change value
+      $('#user-birthday-value').addClass('hidden')      
+      // show plain text on display
+      $('#user-birthday').removeClass('hidden')
+      // hide phone input to change value
+      $('#user-phone-value').addClass('hidden')      
+      // show plain text on display
+      $('#user-phone').removeClass('hidden')
+      // hide email input to change value
+      $('#user-email-value').addClass('hidden')      
+      // show plain text on display
+      $('#user-email').removeClass('hidden')
+      // hide firstname input to change value
+      $('#user-firstname-value').addClass('hidden')      
+      // show plain text on display
+      $('#user-firstname').removeClass('hidden')
+      // hide lastname input to change value
+      $('#user-lastname-value').addClass('hidden')      
+      // show plain text on display
+      $('#user-lastname').removeClass('hidden')
+
+      // save new values for display
+      dname = $("#user-display-name-value").val()
+      bday = $('#user-birthday-value').val()
+      phone = $("#user-phone-value").val()
+      email = $('#user-email-value').val()
+      firstname = $("#user-firstname-value").val()
+      lastname = $('#user-lastname-value').val()
+    }    
+    function editprofile() {
+      // show update button
+      $('#update-profile').removeClass('hidden')
+      // hide edit button
+      $('#edit-profile').addClass('hidden')
+
+      // show user-display input to change value
+      $('#user-display-name-value').removeClass('hidden')      
+      // hide plain text on display
+      $('#user-display-name').addClass('hidden')
+
+      // show birthday input to change value
+      $('#user-birthday-value').removeClass('hidden')
+      // hide plain text on display
+      $('#user-birthday').addClass('hidden')
+
+      // show phone input to change value
+      $('#user-phone-value').removeClass('hidden')
+      // hide plain text on display
+      $('#user-phone').addClass('hidden')
+
+      // show email input to change value
+      $('#user-email-value').removeClass('hidden')
+      // hide plain text on display
+      $('#user-email').addClass('hidden')
+
+      // show firstname input to change value
+      $('#user-firstname-value').removeClass('hidden')
+      // hide plain text on display
+      $('#user-firstname').addClass('hidden')
+
+      // show lastname input to change value
+      $('#user-lastname-value').removeClass('hidden')
+      // hide plain text on display
+      $('#user-lastname').addClass('hidden')
+    }
+    function updateprofile() {
+      var dname = $("#user-display-name-value").val()
+      var bday = $('#user-birthday-value').val()
+      var phone = $('#user-phone-value').val()
+      var email = $("#user-email-value").val()
+      var firstname = $('#user-firstname-value').val()
+      var lastname = $('#user-lastname-value').val()
+
+      dpd.users.put(userid, {
+        "displayname":dname,
+        "birthday":bday,
+        "phone":phone,
+        "email":email,
+        "firstname":firstname,
+        "lastname":lastname
+      }, function(result, err) {
+        if(err) return console.log(err)
+        // update views vaules
+        profileupdate()
+        // update user display
+        $('#user-display-name').text(dname)
+        $('#user-birthday').text(bday)
+        $('#user-phone').text(phone)
+        $('#user-email').text(email)
+        $('#user-firstname').text(firstname)
+        $('#user-lastname').text(lastname)
+      })     
+    }
+
+    dpd.users.me(function(user) {
+      // if we find the current user
+      if (user) {
+        // store current user id
+        userid = user.id
+        $('#user-display-name').text(user.displayname)
+        $("#user-display-name-value").val(user.displayname)
+        $('#user-birthday').text(user.birthday)
+        $("#user-birthday-value").val(user.birthday)
+        $('#user-phone').text(user.phone)
+        $("#user-phone-value").val(user.phone)
+        $('#user-email').text(user.email)
+        $("#user-email-value").val(user.email)
+        $('#user-firstname').text(user.firstname)
+        $("#user-firstname-value").val(user.firstname)
+        $('#user-lastname').text(user.lastname)
+        $("#user-lastname-value").val(user.lastname)
+
+
+        $('h1').text("Welcome, " + user.username + "! Displayname: " + user.displayname );
+      } else {
+        // redirect if no user
+        location.href = "/";
+      }
+    })
+    $('#edit-profile').click(function() {
+      editprofile()
+    })
+    $('#update-profile').click(function() {
+      updateprofile()
+    })    
+    $('#logout-btn').click(function() {
+      dpd.users.logout(function(res, err) {
+        location.href = "/";
+      });
+    });
+  </script>
+</body>
+</html>
